@@ -23,6 +23,7 @@ public class MockLocationPlugin extends Plugin {
                     getActivity(),
                     whitelist.<String>toList())
             );
+            ret.put("packages", implementation.apps);
         } catch (JSONException e) {
             Log.e("MockLocation", "Need to add whitelist apps list", e);
         }
