@@ -1,3 +1,8 @@
 export interface MockLocationPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  isMockLocation(options: { whitelist: string[] }): Promise<{ isEnabled: boolean }>;
+  isDevOptionsEnabled(): Promise<{ isEnabled: boolean }>;
+}
+
+export interface MockLocationResult {
+  isEnabled: boolean;
 }

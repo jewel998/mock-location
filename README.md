@@ -9,28 +9,52 @@ npm install @jewel998/mock-location
 npx cap sync
 ```
 
+Add this to your app Manifest.xml
+
+```xml
+<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+```
+or,
+
+```xml
+<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+    tools:ignore="QueryAllPackagesPermission" />
+```
+
 ## API
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`isMockLocation(...)`](#isMockLocation)
+* [`isDevOptionsEnabled(...)`](#isDevOptionsEnabled)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### isMockLocation(...)
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+isMockLocation(options: { whitelist: Array<string>; }) => Promise<{ isEnabled: boolean; }>
 ```
 
 | Param         | Type                            |
 | ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+| **`options`** | <code>{ whitelist: Array<string>; }</code> |
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** <code>Promise&lt;{ isEnabled: boolean; }&gt;</code>
+
+--------------------
+
+
+### isDevOptionsEnabled(...)
+
+```typescript
+isDevOptionsEnabled() => Promise<{ isEnabled: boolean; }>
+```
+
+**Returns:** <code>Promise&lt;{ isEnabled: boolean; }&gt;</code>
 
 --------------------
 
