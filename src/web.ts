@@ -4,10 +4,10 @@ import type { MockLocationPlugin, MockLocationResult } from './definitions';
 
 export class MockLocationWeb extends WebPlugin implements MockLocationPlugin {
   async isMockLocation(options: { whitelist: string[]; }): Promise<MockLocationResult> {
-    throw new Error('Method not implemented.'+options);
+    return { isEnabled: false };
   }
 
   async isDevOptionsEnabled(): Promise<MockLocationResult> {
-    throw new Error('Method not implemented.');
+    return { isEnabled: false };
   }
 }
