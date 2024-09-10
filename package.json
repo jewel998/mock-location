@@ -1,6 +1,6 @@
 {
   "name": "@jewel998/mock-location",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Detect Mock Location in an Capacitor Application",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

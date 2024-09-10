@@ -2,6 +2,7 @@ package com.dailydumbbell.plugin.mocklocation;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -106,29 +107,33 @@ public class MockLocation {
 
         return count > 0;
     }
+    
+    public boolean isDeveloperOptionsEnabled(Activity activity) {
+        Context context = activity.getApplicationContext();
+        int devOptions;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            devOptions = Settings.Global.getInt(context.getContentResolver(), Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0);
+        } else {
+            devOptions = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.DEVELOPMENT_SETTINGS_ENABLED, 0);
+        }
+        return devOptions != 0;
+    }
+
+    public boolean isADBEnabled(Activity activity) {
+        Context context = activity.getApplicationContext();
+        int adbEnabled;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            adbEnabled = Settings.Global.getInt(context.getContentResolver(), Settings.Global.ADB_ENABLED, 0);
+        } else {
+            adbEnabled = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.ADB_ENABLED, 0);
+        }
+        return adbEnabled != 0;
+    }
 
     public boolean isDevOptionsEnabled(Activity activity) {
-        int androidSdkVersion = Build.VERSION.SDK_INT;
-        String settings = "";
+        boolean devOptions = isDeveloperOptionsEnabled(activity);
+        boolean adbEnabled = isADBEnabled(activity);
 
-        try {
-            if(androidSdkVersion < 16) {
-                settings = Settings.Secure.ADB_ENABLED;
-            } else {
-                if(androidSdkVersion == 16) {
-                    settings = Settings.Secure.DEVELOPMENT_SETTINGS_ENABLED;
-                } else {
-                    settings = Settings.Global.DEVELOPMENT_SETTINGS_ENABLED;
-                }
-            }
-
-            if(settings == "development_settings_enabled") {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
+        return devOptions || adbEnabled;
     }
 }
