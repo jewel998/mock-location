@@ -25,8 +25,8 @@ or,
 
 <docgen-index>
 
-* [`isMockLocation(...)`](#isMockLocation)
-* [`isDevOptionsEnabled(...)`](#isDevOptionsEnabled)
+* [`isMockLocation(...)`](#ismocklocation)
+* [`isDevOptionsEnabled()`](#isdevoptionsenabled)
 
 </docgen-index>
 
@@ -36,19 +36,19 @@ or,
 ### isMockLocation(...)
 
 ```typescript
-isMockLocation(options: { whitelist: Array<string>; }) => Promise<{ isEnabled: boolean; }>
+isMockLocation(options: { whitelist: string[]; }) => Promise<{ isEnabled: boolean; }>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ whitelist: Array<string>; }</code> |
+| Param         | Type                                  |
+| ------------- | ------------------------------------- |
+| **`options`** | <code>{ whitelist: string[]; }</code> |
 
 **Returns:** <code>Promise&lt;{ isEnabled: boolean; }&gt;</code>
 
 --------------------
 
 
-### isDevOptionsEnabled(...)
+### isDevOptionsEnabled()
 
 ```typescript
 isDevOptionsEnabled() => Promise<{ isEnabled: boolean; }>
