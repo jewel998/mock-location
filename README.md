@@ -36,14 +36,14 @@ or,
 ### isMockLocation(...)
 
 ```typescript
-isMockLocation(options: { whitelist: string[]; }) => Promise<{ isEnabled: boolean; apps?: string[]; }>
+isMockLocation(options: { whitelist: string[]; }) => Promise<{ isEnabled: boolean; packages?: string[]; }>
 ```
 
 | Param         | Type                                  |
 | ------------- | ------------------------------------- |
 | **`options`** | <code>{ whitelist: string[]; }</code> |
 
-**Returns:** <code>Promise&lt;{ isEnabled: boolean; apps?: string[]; }&gt;</code>
+**Returns:** <code>Promise&lt;{ isEnabled: boolean; packages?: string[]; }&gt;</code>
 
 --------------------
 
