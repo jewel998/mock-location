@@ -85,9 +85,13 @@ public class MockLocation {
                     // Get Permissions
                     String[] permissions = packageInfo.requestedPermissions;
                     ArrayList<String> requestedPermissions = new ArrayList();
-                    final int permissionSize = permissions.length;
-                    for (int j = 0; j < permissionSize; j++) {
-                        requestedPermissions.add(permissions[j]);
+                    if (permissions != null) {  // Check if permissions array is not null
+                        final int permissionSize = permissions.length;
+                        
+                        // Iterate over the permissions and add them to the requestedPermissions list
+                        for (int j = 0; j < permissionSize; j++) {
+                            requestedPermissions.add(permissions[j]);
+                        }
                     }
 
                     String perm = "android.permission.ACCESS_MOCK_LOCATION";
